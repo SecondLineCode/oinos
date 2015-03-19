@@ -1,0 +1,17 @@
+<h1>Search for Wine</h1>
+<h2>Products:</h2>
+<% @products.each do |wine| %>
+  <%= image_tag(wine["Labels"][0]["Url"]) %><br>
+  <b><%= wine["Name"] %></b> by <%= wine["Vineyard"]["Name"] %><br>
+  <%= wine["Url"] %><br>
+  Region, Country:  <%= wine["Appellation"]["Region"]["Name"] %>, <%= wine["Appellation"]["Name"] %><br>
+  Varietal:  <%= wine["Varietal"]["WineType"]["Name"] %>, <%= wine["Varietal"]["Name"] %><br>
+  Price range:  $<%= wine["PriceMin"] %> - $<%= wine["PriceMax"] %><br>
+  Attributes:<br>
+  <ul>
+    <% wine["ProductAttributes"].each do |attribute| %>
+      <li><%= raw(attribute["Name"]) %></li>
+    <% end %>
+  </ul>
+  <br>
+<% end %>
