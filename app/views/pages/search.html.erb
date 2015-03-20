@@ -1,5 +1,11 @@
 <h1>Search for Wine</h1>
 <h2>Products:</h2>
+
+<%= form_tag(pages_search_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Wines" %>
+  <%= submit_tag "Search", :request_query => nil %>
+<% end %>
+
 <% @products.each do |wine| %>
   <%= image_tag(wine["Labels"][0]["Url"]) %><br>
   <b><%= wine["Name"] %></b> by <%= wine["Vineyard"]["Name"] %><br>

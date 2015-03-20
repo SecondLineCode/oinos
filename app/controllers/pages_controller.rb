@@ -3,10 +3,12 @@ class PagesController < ApplicationController
     # http://ruby-doc.org/stdlib-2.0.0/libdoc/open-uri/rdoc/OpenURI.html
     require 'open-uri'
 
+  if params[:search]
     # Construct the URL we'll be calling
     request_uri = 'http://services.wine.com/api/beta2/service.svc/json/catalog?apikey=c880d81f0c6e496f2605bead17ddd36c'
-    request_query = '&search="mondavi"&size=5'
-    url = "#{request_uri}#{request_query}"
+    request_type = '&size=10&search='
+    request_query = "#{params[:search]}"
+    url = "#{request_uri}#{request_type}'#{request_query}'"
 
     # Actually fetch the contents of the remote URL as a String.
     encoded_url = URI.encode(url)
@@ -17,5 +19,10 @@ class PagesController < ApplicationController
     @products = @result["Products"]["List"]
 
     #TODO:  figure out how to grab the thumbnail or larger image, not the first image
+  else
+    @products = Array.new
+  end
+
+
   end
 end
