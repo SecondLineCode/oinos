@@ -1,9 +1,11 @@
 <h1>Search for Wine</h1>
 <h2>Products:</h2>
 
-<%= form_tag(pages_search_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Wines" %>
-  <%= submit_tag "Search", :request_query => nil %>
+<%= form_tag(pages_search_path, :method => "get", id: "search-form", class: "form-inline") do %>
+  <div class="form-group">
+    <%= text_field_tag :search, params[:search], :class => "form-control", placeholder: "Search Wines" %>
+    <%= submit_tag "Search", :request_query => nil, :class => "btn btn-default" %>
+  </div>
 <% end %>
 
 <% @products.each do |wine| %>
