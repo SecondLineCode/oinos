@@ -8,6 +8,11 @@
   </div>
 <% end %>
 
+<div id="attribution">
+  Search provided by
+  <a href="http://www.wine.com/" title="Wine.com the destination for Wine and Wine Gifts"><img src="http://cache.wine.com/images/logos/80x20_winecom_logo.png" alt="Wine.com the destination for Wine and Wine Gifts" /></a>
+</div>
+
 <% @products.each do |wine| %>
   <%= image_tag(wine["Labels"][0]["Url"]) %><br>
   <b><%= wine["Name"] %></b> by <%= wine["Vineyard"]["Name"] %><br>

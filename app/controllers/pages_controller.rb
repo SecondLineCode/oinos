@@ -20,7 +20,8 @@ class PagesController < ApplicationController
     @result = JSON.parse(buffer)
     @products = @result["Products"]["List"]
 
-    #TODO:  figure out how to grab the thumbnail or larger image, not the first image
+    #TODO:  figure out how to grab the thumbnail or larger image, not the first image.
+    #TODO:  handle bad searches that either return nothing or return empty fields on the ones shown.
   else
     @products = Array.new
   end
