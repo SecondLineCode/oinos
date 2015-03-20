@@ -42,7 +42,9 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
   # Send email in development mode?
-  config.action_mailer.perform_deliveries = true
+  # TODO:  Fix email SMTP issues and turn this back on.
+  # TODO:  Format confirmation emails.
+  config.action_mailer.perform_deliveries = false
 
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
