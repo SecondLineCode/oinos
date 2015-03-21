@@ -4,7 +4,7 @@
   <div class="form-inputs">
     <%= f.input :api_id %>
     <%= f.input :varietal %>
-    <%= f.input :varietal_type %>
+    <%= f.collection_select :wine_type_id, @wine_types, :id, :wine_type, {prompt: 'Select a wine type'}, {class: 'form-control'} %>
   </div>
 
   <div class="form-actions">

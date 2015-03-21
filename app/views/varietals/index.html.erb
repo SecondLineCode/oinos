@@ -17,7 +17,7 @@
       <tr>
         <td><%= varietal.api_id %></td>
         <td><%= varietal.varietal %></td>
-        <td><%= varietal.varietal_type %></td>
+        <td><%= varietal.wine_type.wine_type %></td>
         <td><%= link_to 'Show', varietal %></td>
         <td><%= link_to 'Edit', edit_varietal_path(varietal) %></td>
         <td><%= link_to 'Destroy', varietal, method: :delete, data: { confirm: 'Are you sure?' } %></td>

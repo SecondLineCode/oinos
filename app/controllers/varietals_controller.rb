@@ -7,6 +7,7 @@ class VarietalsController < ApplicationController
   # GET /varietals.json
   def index
     @varietals = Varietal.all
+    @wine_types = WineType.all
   end
 
   # GET /varietals/1
@@ -17,16 +18,19 @@ class VarietalsController < ApplicationController
   # GET /varietals/new
   def new
     @varietal = Varietal.new
+    @wine_types = WineType.all
   end
 
   # GET /varietals/1/edit
   def edit
+    @wine_types = WineType.all
   end
 
   # POST /varietals
   # POST /varietals.json
   def create
     @varietal = Varietal.new(varietal_params)
+    @wine_types = WineType.all
 
     respond_to do |format|
       if @varietal.save
@@ -42,6 +46,8 @@ class VarietalsController < ApplicationController
   # PATCH/PUT /varietals/1
   # PATCH/PUT /varietals/1.json
   def update
+    @wine_types = WineType.all
+
     respond_to do |format|
       if @varietal.update(varietal_params)
         format.html { redirect_to @varietal, notice: 'Varietal was successfully updated.' }
@@ -77,6 +83,6 @@ class VarietalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def varietal_params
-      params.require(:varietal).permit(:api_id, :varietal, :varietal_type)
+      params.require(:varietal).permit(:api_id, :varietal, :wine_type_id)
     end
 end
