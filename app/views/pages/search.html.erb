@@ -15,21 +15,27 @@
 
 <% if @products != nil %>
   <% @products.each do |wine| %>
-    <%= image_tag(wine["label"]) %><br>
-    <b><%= wine["name"] %></b> by <%= wine["vineyard"] %><br>
-    <%= wine["url"] %><br>
-    Appellation:  <%= wine["appellation_name"] %>, <%= wine["appellation_region"] %><br>
-    Varietal:  <%= wine["varietal_name"] %><br>
-    <% if wine["pricemin"] != nil %>
-      Price range:  $<%= wine["pricemin"] %> - $<%= wine["pricemax"] %><br>
-    <% end %>
-    <% if wine["attributes"].length > 0 %>
-      Attributes:<br>
-      <ul>
-        <% wine["attributes"].each do |attribute| %>
-          <li><%= raw(attribute) %></li>
+    <%= form_tag(new_user_wine_path, :method => "get", class: "form-inline") do %>
+      <div class="form-group">
+        <%= image_tag(wine["label"]) %><br>
+        <b><%= wine["name"] %></b> by <%= wine["vineyard"] %><br>
+        <%= wine["url"] %><br>
+        Appellation:  <%= wine["appellation_name"] %>, <%= wine["appellation_region"] %><br>
+        Varietal:  <%= wine["varietal_name"] %><br>
+        <% if wine["pricemin"] != nil %>
+          Price range:  $<%= wine["pricemin"] %> - $<%= wine["pricemax"] %><br>
         <% end %>
-      </ul>
+        <% if wine["attributes"].length > 0 %>
+          Attributes:<br>
+          <ul>
+            <% wine["attributes"].each do |attribute| %>
+              <li><%= raw(attribute) %></li>
+            <% end %>
+          </ul>
+        <% end %>
+        <%= button_to 'Add to Wines', user_wines_path(wine_id: wine) %>
+        <%= button_to 'Add to My Wines', user_wines_path(wine_id: wine) %>
+      </div>
     <% end %>
     <br>
   <% end %>

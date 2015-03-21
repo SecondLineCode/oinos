@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150321021814) do
+ActiveRecord::Schema.define(version: 20150321173538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,16 +83,25 @@ ActiveRecord::Schema.define(version: 20150321021814) do
   create_table "varietals", force: :cascade do |t|
     t.integer  "api_id"
     t.string   "varietal"
-    t.string   "varietal_type"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "wine_type_id"
   end
+
+  add_index "varietals", ["wine_type_id"], name: "index_varietals_on_wine_type_id", using: :btree
 
   create_table "vineyards", force: :cascade do |t|
     t.string   "vineyard_name"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "api_id"
+  end
+
+  create_table "wine_types", force: :cascade do |t|
+    t.integer  "api_id"
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "wines", force: :cascade do |t|
@@ -119,6 +128,7 @@ ActiveRecord::Schema.define(version: 20150321021814) do
   add_foreign_key "user_wines", "stages"
   add_foreign_key "user_wines", "users"
   add_foreign_key "user_wines", "wines"
+  add_foreign_key "varietals", "wine_types"
   add_foreign_key "wines", "appellations"
   add_foreign_key "wines", "varietals"
   add_foreign_key "wines", "vineyards"

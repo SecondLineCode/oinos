@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Api:</strong>
+  <%= @wine_type.api_id %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @wine_type.type %>
+</p>
+
+<%= link_to 'Edit', edit_wine_type_path(@wine_type) %> |
+<%= link_to 'Back', wine_types_path %>

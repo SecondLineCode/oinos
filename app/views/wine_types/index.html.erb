@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Wine Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Api</th>
+      <th>Type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @wine_types.each do |wine_type| %>
+      <tr>
+        <td><%= wine_type.api_id %></td>
+        <td><%= wine_type.type %></td>
+        <td><%= link_to 'Show', wine_type %></td>
+        <td><%= link_to 'Edit', edit_wine_type_path(wine_type) %></td>
+        <td><%= link_to 'Destroy', wine_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wine type', new_wine_type_path %>
