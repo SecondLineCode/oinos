@@ -1,4 +1,6 @@
 class WinesController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :admin_only
   before_action :set_wine, only: [:show, :edit, :update, :destroy]
 
   # GET /wines
@@ -58,6 +60,12 @@ class WinesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to wines_url, notice: 'Wine was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def admin_only
+    unless current_user.admin?
+      redirect_to root_path, :alert => "Access denied."
     end
   end
 

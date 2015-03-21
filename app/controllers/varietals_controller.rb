@@ -1,4 +1,6 @@
 class VarietalsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :admin_only
   before_action :set_varietal, only: [:show, :edit, :update, :destroy]
 
   # GET /varietals
@@ -58,6 +60,12 @@ class VarietalsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to varietals_url, notice: 'Varietal was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def admin_only
+    unless current_user.admin?
+      redirect_to root_path, :alert => "Access denied."
     end
   end
 
