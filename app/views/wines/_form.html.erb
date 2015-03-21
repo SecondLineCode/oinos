@@ -1,0 +1,22 @@
+<%= simple_form_for(@wine) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :vineyard %>
+    <%= f.association :appellation %>
+    <%= f.association :varietal %>
+    <%= f.input :name %>
+    <%= f.input :label_url %>
+    <%= f.input :api_url %>
+    <%= f.input :pricemin %>
+    <%= f.input :pricemax %>
+    <%= f.input :attributes %>
+    <%= f.input :sku %>
+    <%= f.input :api_provider %>
+    <%= f.input :api_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

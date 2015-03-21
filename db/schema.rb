@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150319151840) do
+ActiveRecord::Schema.define(version: 20150321014849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appellations", force: :cascade do |t|
+    t.string   "app_name"
+    t.string   "app_region"
+    t.string   "app_area"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "api_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -51,4 +60,43 @@ ActiveRecord::Schema.define(version: 20150319151840) do
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "varietals", force: :cascade do |t|
+    t.integer  "api_id"
+    t.string   "varietal"
+    t.string   "varietal_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "vineyards", force: :cascade do |t|
+    t.string   "vineyard_name"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "api_id"
+  end
+
+  create_table "wines", force: :cascade do |t|
+    t.integer  "vineyard_id"
+    t.integer  "appellation_id"
+    t.integer  "varietal_id"
+    t.string   "name"
+    t.string   "label_url"
+    t.string   "api_url"
+    t.float    "pricemin"
+    t.float    "pricemax"
+    t.string   "attributes"
+    t.string   "sku"
+    t.string   "api_provider"
+    t.integer  "api_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "wines", ["appellation_id"], name: "index_wines_on_appellation_id", using: :btree
+  add_index "wines", ["varietal_id"], name: "index_wines_on_varietal_id", using: :btree
+  add_index "wines", ["vineyard_id"], name: "index_wines_on_vineyard_id", using: :btree
+
+  add_foreign_key "wines", "appellations"
+  add_foreign_key "wines", "varietals"
+  add_foreign_key "wines", "vineyards"
 end

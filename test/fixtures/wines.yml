@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vineyard_id: 
+  appellation_id: 
+  varietal_id: 
+  name: MyString
+  label_url: MyString
+  api_url: MyString
+  pricemin: 1.5
+  pricemax: 1.5
+  attributes: MyString
+  sku: MyString
+  api_provider: MyString
+  api_id: 1
+
+two:
+  vineyard_id: 
+  appellation_id: 
+  varietal_id: 
+  name: MyString
+  label_url: MyString
+  api_url: MyString
+  pricemin: 1.5
+  pricemax: 1.5
+  attributes: MyString
+  sku: MyString
+  api_provider: MyString
+  api_id: 1

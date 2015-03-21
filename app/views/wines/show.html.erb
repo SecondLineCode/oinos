@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Vineyard:</strong>
+  <%= @wine.vineyard %>
+</p>
+
+<p>
+  <strong>Appellation:</strong>
+  <%= @wine.appellation %>
+</p>
+
+<p>
+  <strong>Varietal:</strong>
+  <%= @wine.varietal %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @wine.name %>
+</p>
+
+<p>
+  <strong>Label url:</strong>
+  <%= @wine.label_url %>
+</p>
+
+<p>
+  <strong>Api url:</strong>
+  <%= @wine.api_url %>
+</p>
+
+<p>
+  <strong>Pricemin:</strong>
+  <%= @wine.pricemin %>
+</p>
+
+<p>
+  <strong>Pricemax:</strong>
+  <%= @wine.pricemax %>
+</p>
+
+<p>
+  <strong>Attributes:</strong>
+  <%= @wine.attributes %>
+</p>
+
+<p>
+  <strong>Sku:</strong>
+  <%= @wine.sku %>
+</p>
+
+<p>
+  <strong>Api provider:</strong>
+  <%= @wine.api_provider %>
+</p>
+
+<p>
+  <strong>Api:</strong>
+  <%= @wine.api_id %>
+</p>
+
+<%= link_to 'Edit', edit_wine_path(@wine) %> |
+<%= link_to 'Back', wines_path %>

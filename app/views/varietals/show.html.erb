@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Api:</strong>
+  <%= @varietal.api_id %>
+</p>
+
+<p>
+  <strong>Varietal:</strong>
+  <%= @varietal.varietal %>
+</p>
+
+<p>
+  <strong>Varietal type:</strong>
+  <%= @varietal.varietal_type %>
+</p>
+
+<%= link_to 'Edit', edit_varietal_path(@varietal) %> |
+<%= link_to 'Back', varietals_path %>

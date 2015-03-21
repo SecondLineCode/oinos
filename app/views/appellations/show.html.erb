@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>App name:</strong>
+  <%= @appellation.app_name %>
+</p>
+
+<p>
+  <strong>App region:</strong>
+  <%= @appellation.app_region %>
+</p>
+
+<p>
+  <strong>App area:</strong>
+  <%= @appellation.app_area %>
+</p>
+
+<%= link_to 'Edit', edit_appellation_path(@appellation) %> |
+<%= link_to 'Back', appellations_path %>
