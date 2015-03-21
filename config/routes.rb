@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :wine_types
+
   resources :user_wines
 
   resources :stages
