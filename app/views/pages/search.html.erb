@@ -13,7 +13,7 @@
   <a href="http://www.wine.com/" title="Wine.com the destination for Wine and Wine Gifts"><img src="http://cache.wine.com/images/logos/80x20_winecom_logo.png" alt="Wine.com the destination for Wine and Wine Gifts" /></a>
 </div>
 
-<% if @products.length > 0 %>
+<% if @products != nil %>
   <% @products.each do |wine| %>
     <%= image_tag(wine["label"]) %><br>
     <b><%= wine["name"] %></b> by <%= wine["vineyard"] %><br>
