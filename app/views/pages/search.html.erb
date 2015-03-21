@@ -13,18 +13,27 @@
   <a href="http://www.wine.com/" title="Wine.com the destination for Wine and Wine Gifts"><img src="http://cache.wine.com/images/logos/80x20_winecom_logo.png" alt="Wine.com the destination for Wine and Wine Gifts" /></a>
 </div>
 
-<% @products.each do |wine| %>
-  <%= image_tag(wine["Labels"][0]["Url"]) %><br>
-  <b><%= wine["Name"] %></b> by <%= wine["Vineyard"]["Name"] %><br>
-  <%= wine["Url"] %><br>
-  Region, Country:  <%= wine["Appellation"]["Region"]["Name"] %>, <%= wine["Appellation"]["Name"] %><br>
-  Varietal:  <%= wine["Varietal"]["WineType"]["Name"] %>, <%= wine["Varietal"]["Name"] %><br>
-  Price range:  $<%= wine["PriceMin"] %> - $<%= wine["PriceMax"] %><br>
-  Attributes:<br>
-  <ul>
-    <% wine["ProductAttributes"].each do |attribute| %>
-      <li><%= raw(attribute["Name"]) %></li>
+<% if @products.length > 0 %>
+  <% @products.each do |wine| %>
+    <%= image_tag(wine["label"]) %><br>
+    <b><%= wine["name"] %></b> by <%= wine["vineyard"] %><br>
+    <%= wine["url"] %><br>
+    Region, Country:  <%= wine["appellation_region"] %>, <%= wine["appellation_name"] %><br>
+    Varietal:  <%= wine["varietal_type"] %>, <%= wine["varietal_name"] %><br>
+    <% if wine["pricemin"] != nil %>
+      Price range:  $<%= wine["pricemin"] %> - $<%= wine["pricemax"] %><br>
     <% end %>
-  </ul>
+    <% if wine["attributes"].length > 0 %>
+      Attributes:<br>
+      <ul>
+        <% wine["attributes"].each do |attribute| %>
+          <li><%= raw(attribute) %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <br>
+  <% end %>
+<% else %>
   <br>
+  No results.
 <% end %>
