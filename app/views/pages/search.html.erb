@@ -18,8 +18,8 @@
     <%= image_tag(wine["label"]) %><br>
     <b><%= wine["name"] %></b> by <%= wine["vineyard"] %><br>
     <%= wine["url"] %><br>
-    Region, Country:  <%= wine["appellation_region"] %>, <%= wine["appellation_name"] %><br>
-    Varietal:  <%= wine["varietal_type"] %>, <%= wine["varietal_name"] %><br>
+    Appellation:  <%= wine["appellation_name"] %>, <%= wine["appellation_region"] %><br>
+    Varietal:  <%= wine["varietal_name"] %><br>
     <% if wine["pricemin"] != nil %>
       Price range:  $<%= wine["pricemin"] %> - $<%= wine["pricemax"] %><br>
     <% end %>
