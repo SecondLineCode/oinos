@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @user_wine.user %>
+</p>
+
+<p>
+  <strong>Wine:</strong>
+  <%= @user_wine.wine %>
+</p>
+
+<p>
+  <strong>Stage:</strong>
+  <%= @user_wine.stage %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @user_wine.rating %>
+</p>
+
+<p>
+  <strong>Review:</strong>
+  <%= @user_wine.review %>
+</p>
+
+<%= link_to 'Edit', edit_user_wine_path(@user_wine) %> |
+<%= link_to 'Back', user_wines_path %>
